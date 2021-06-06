@@ -26,7 +26,7 @@ function Dashboard() {
       0
     );
     return (
-      <tr key={order.id}>
+      <tr key={order.order_id}>
         <td>{index + 1}</td>
         <td>{order.deliverTo}</td>
         <td>{order.mobileNumber}</td>
@@ -34,7 +34,7 @@ function Dashboard() {
         <td>{order.status}</td>
         <td>
           <Link
-            to={`/orders/${order.id}/edit`}
+            to={`/orders/${order.order_id}/edit`}
             className="btn btn-secondary"
             title="Edit Order"
           >
@@ -47,14 +47,14 @@ function Dashboard() {
 
   const DishesList = dishes.map((dish, index) => {
     return (
-      <tr key={dish.id}>
+      <tr key={dish.dish_id}>
         <td>{index + 1}</td>
         <td>{dish.name}</td>
         <td>{dish.description}</td>
         <td>$ {dish.price}</td>
         <td>
           <Link
-            to={`/dishes/${dish.id}/edit`}
+            to={`/dishes/${dish.dish_id}/edit`}
             className="btn btn-secondary"
             title="Edit Order"
           >

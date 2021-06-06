@@ -27,7 +27,7 @@ function DishEdit() {
     history.goBack();
   }
 
-  const child = dish.id ? (
+  const child = dish.dish_id ? (
     <DishForm
       initialState={dish}
       onCancel={cancelHandler}

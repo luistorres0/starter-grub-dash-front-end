@@ -17,7 +17,7 @@ function Home({ addToCart }) {
   }
 
   const cards = dishes.map((dish) => (
-    <DishCard key={dish.id} dish={dish}>
+    <DishCard key={dish.dish_id} dish={dish}>
       <button className="btn btn-primary" onClick={() => addToCart(dish)}>
         <span className="oi oi-plus" /> Add to cart
       </button>

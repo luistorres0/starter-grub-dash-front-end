@@ -25,7 +25,7 @@ function OrderConfirmed() {
     history.push("/");
   }
 
-  const child = order.id ? (
+  const child = order.order_id ? (
     <OrderForm order={order} readOnly={true} showStatus={true}>
       <div className="col-auto">
         <button

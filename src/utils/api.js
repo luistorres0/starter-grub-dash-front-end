@@ -101,7 +101,7 @@ export async function listOrders(signal) {
  *  a promise that resolves to the update order.
  */
 export async function updateOrder(order, signal) {
-  const url = `${API_BASE_URL}/orders/${order.id}`;
+  const url = `${API_BASE_URL}/orders/${order.order_id}`;
   const options = {
     method: "PUT",
     headers,
@@ -162,7 +162,7 @@ export async function readDish(dishId, signal) {
  *  a promise that resolves to the updated dish.
  */
 export async function updateDish(dish, signal) {
-  const url = `${API_BASE_URL}/dishes/${dish.id}`;
+  const url = `${API_BASE_URL}/dishes/${dish.dish_id}`;
   const options = {
     method: "PUT",
     headers,

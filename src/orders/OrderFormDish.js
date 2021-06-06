@@ -1,17 +1,17 @@
 import React from "react";
 
 function OrderFormDish({
-  dish: { id, name, quantity, price },
+  dish: { dish_id, name, quantity, price },
   setDishQuantity,
   deleteDish,
   readOnly,
 }) {
   function changeHandler({ target: { value } }) {
-    setDishQuantity(id, Number(value));
+    setDishQuantity(dish_id, Number(value));
   }
 
   function deleteHandler() {
-    deleteDish(id);
+    deleteDish(dish_id);
   }
 
   return (
@@ -20,7 +20,7 @@ function OrderFormDish({
         <input
           type="number"
           className="form-control"
-          name={id}
+          name={dish_id}
           value={quantity}
           disabled={readOnly}
           onChange={changeHandler}

@@ -13,7 +13,7 @@ import OrderConfirmed from "../orders/OrderComfired";
 
 const initialState = {
   deliverTo: "",
-  mobilePhone: "",
+  mobileNumber: "",
   status: "pending",
   dishes: [],
 };
@@ -24,9 +24,7 @@ function Layout() {
 
   function addToCart(newDish) {
     setOrder((previousOrder) => {
-      const index = previousOrder.dishes.findIndex(
-        (dish) => dish.id === newDish.id
-      );
+      const index = previousOrder.dishes.findIndex((dish) => dish.dish_id === newDish.dish_id);
 
       if (index === -1) {
         return {
@@ -37,7 +35,7 @@ function Layout() {
 
       const dishes = previousOrder.dishes.map((dish) => ({
         ...dish,
-        quantity: dish.quantity + (dish.id === newDish.id),
+        quantity: dish.quantity + (dish.dish_id === newDish.dish_id),
       }));
 
       return {
@@ -49,15 +47,13 @@ function Layout() {
 
   function onSubmit(newOrder) {
     setOrder({ ...initialState });
-    history.push(`/orders/${newOrder.id}/confirmed`);
+    history.push(`/orders/${newOrder.order_id}/confirmed`);
   }
 
   return (
     <>
       <Header />
-      <Menu
-        cartCount={order.dishes.reduce((sum, dish) => sum + dish.quantity, 0)}
-      />
+      <Menu cartCount={order.dishes.reduce((sum, dish) => sum + dish.quantity, 0)} />
       <div className="container">
         <Switch>
           <Route exact={true} path="/orders">
@@ -67,17 +63,16 @@ function Layout() {
             <Redirect to={"/dashboard"} />
           </Route>
           <Route path="/orders/new">
-            <OrderCreate
-              order={order}
-              setOrder={setOrder}
-              onSubmit={onSubmit}
-            />
+            <OrderCreate order={order} setOrder={setOrder} onSubmit={onSubmit} />
           </Route>
           <Route path="/orders/:orderId/confirmed">
             <OrderConfirmed />
           </Route>
           <Route path="/orders/:orderId/edit">
             <OrderEdit />
+          </Route>
+          <Route path="/orders/:orderId">
+            <Dashboard />
           </Route>
           <Route path="/dashboard">
             <Dashboard />

@@ -19,7 +19,7 @@ function OrderEdit() {
 
   function submitHandler(updatedOrder) {
     updateOrder(updatedOrder)
-      .then((savedOrder) => history.push(`/orders/${savedOrder.id}`))
+      .then((savedOrder) => history.push(`/orders/${savedOrder.order_id}`))
       .catch(setError);
   }
 
@@ -28,17 +28,15 @@ function OrderEdit() {
   }
 
   function deleteHandler() {
-    const confirmed = window.confirm(
-      "Delete this order?\n\nYou will not be able to recover it."
-    );
+    const confirmed = window.confirm("Delete this order?\n\nYou will not be able to recover it.");
     if (confirmed) {
-      deleteOrder(order.id)
+      deleteOrder(order.order_id)
         .then(() => history.push("/dashboard"))
         .catch(setError);
     }
   }
 
-  const child = order.id ? (
+  const child = order.order_id ? (
     <OrderForm
       order={order}
       setOrder={setOrder}
@@ -48,11 +46,7 @@ function OrderEdit() {
       showStatus={true}
     >
       <div className="mr-auto">
-        <button
-          type="button"
-          className="btn btn-secondary mr-2"
-          onClick={cancelHandler}
-        >
+        <button type="button" className="btn btn-secondary mr-2" onClick={cancelHandler}>
           <span className="oi oi-x" /> Cancel
         </button>
         <button

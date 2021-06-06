@@ -25,12 +25,12 @@ function DishView() {
     history.goBack();
   }
 
-  function deleteHandler() {
+  function deleteHandler(order) {
     const confirmed = window.confirm(
       "Delete this order?\n\nYou will not be able to recover it."
     );
     if (confirmed) {
-      deleteOrder(order.id)
+      deleteOrder(order.order_id)
         .then(() => history.push("/orders"))
         .catch(setError);
     }
@@ -41,7 +41,7 @@ function DishView() {
       <h1>View Dish</h1>
       <ErrorAlert error={error} />
       <DishCard dish={dish}>
-        <Link to={`/dishes/${dish.id}/edit`} className="btn btn-secondary">
+        <Link to={`/dishes/${dish.dish_id}/edit`} className="btn btn-secondary">
           <span className="oi oi-pencil" /> Edit
         </Link>
       </DishCard>

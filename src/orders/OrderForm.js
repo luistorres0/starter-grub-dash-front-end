@@ -4,7 +4,7 @@ import OrderFormDish from "./OrderFormDish";
 function OrderForm({
   order = {
     deliverTo: "",
-    mobilePhone: "",
+    mobileNumber: "",
     status: "pending",
     dishes: [],
   },
@@ -33,7 +33,7 @@ function OrderForm({
       const dishes = previousOrder.dishes.map((dish) => {
         return {
           ...dish,
-          quantity: dish.id === dishId ? Math.max(1, quantity) : dish.quantity,
+          quantity: dish.dish_id === dishId ? Math.max(1, quantity) : dish.quantity,
         };
       });
 
@@ -48,14 +48,14 @@ function OrderForm({
     setOrder((previousOrder) => {
       return {
         ...previousOrder,
-        dishes: previousOrder.dishes.filter((dish) => dish.id !== dishId),
+        dishes: previousOrder.dishes.filter((dish) => dish.dish_id !== dishId),
       };
     });
   }
 
   const dishes = order.dishes.map((dish) => (
     <OrderFormDish
-      key={dish.id}
+      key={dish.dish_id}
       dish={dish}
       setDishQuantity={setDishQuantity}
       deleteDish={deleteDish}
